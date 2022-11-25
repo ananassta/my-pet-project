@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { changeNum } from "../../features/calculator/calculatorSlice";
 
 export enum CalculatorButtonTypeEnum {
   normal,
@@ -11,5 +13,6 @@ type CalculatorButtonType = {
 };
 
 export const CalculatorButton = ({ value, type }: CalculatorButtonType) => {
-  return <div>{value}</div>;
+  const dispatch = useDispatch();
+  return <button onClick={() => dispatch(changeNum(Number(value) || 0))}>{value}</button>;
 };
