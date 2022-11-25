@@ -6,7 +6,7 @@ import { CalculatorButtonTypeEnum } from "../../components/CalculatorButton/Calc
 
 export const Calculator = () => {
   const buttons = ["C", "+/-", "%", "/", 7, 8, 9, "*", 4, 5, 6, "-", 1, 2, 3, "+", 0, "."];
-  const currNum = useSelector((state: RootState)=>state.calculator.value);
+  const currNum = useSelector((state: RootState)=>state.calculator.currValue);
   return (<div>
     <div>
       <p>{currNum}</p>
