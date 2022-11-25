@@ -51,7 +51,7 @@ export const calculatorSlice = createSlice({
           state.currRes = state.currRes - currValue;
           state.currValue = state.currRes;
           state.currOperation = operation !== "=" && operation !== "%" ? operation : null;
-        } else if (state.currOperation === "*") {
+        } else if (state.currOperation === "x") {
           state.currRes = state.currRes * currValue;
           state.currValue = state.currRes;
           state.currOperation = operation !== "=" && operation !== "%" ? operation : null;

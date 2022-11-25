@@ -1,0 +1,71 @@
+.calculator {
+  cursor: default;
+  background-color: whitesmoke;
+  border-radius: 25px;
+  color: rgb(49, 79, 105);
+  padding: 40px 20px 30px;
+  box-shadow: 1px 5px 15px rgba(0, 0, 0, 0.5);
+  margin: 5px 5px;
+  width: 20vw;
+}
+
+.calculatorTitle {
+  padding-bottom: 30px;
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.calculatorNumberField {
+  text-align: right;
+  padding-right: 10%;
+  padding-left: 10%;
+  font-size: 1.2em;
+  /* color: rgb(49, 79, 105); */
+  /* background-color: #f5f5f5; */
+  /* border-radius: 5px; */
+  /* box-shadow: 0 1px 5px rgba( 0, 0, 0, 0.5); */
+}
+
+.calculatorButtonsField {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+    .calculator {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 300px) {
+    .calculator {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+    .calculatorNumberField {
+        padding-right: 8%;
+        padding-left: 8%;
+    }
+}
+
+@media (max-height: 500px) {
+  .calculator {
+    padding: 20px 0px 10px;
+    width: 47vw;
+  }
+  .calculatorTitle {
+    font-size: 1.5em;
+    padding-bottom: 0px;
+  }
+  .calculatorNumberField {
+    font-size: 1.5em;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+  .calculatorNumberField > p {
+    margin: 5px;
+  }
+  .calculatorButtonsField {
+  }
+}
