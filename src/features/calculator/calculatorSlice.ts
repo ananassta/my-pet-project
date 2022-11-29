@@ -12,19 +12,36 @@ export const calculatorSlice = createSlice({
   },
   reducers: {
     changeNum(state, action: PayloadAction<number>) {
+      const calculatorNumberField = document.getElementById(
+        "calculatorNumberField"
+      );
+      const amountOfNumbersOnScreen = Math.floor(
+        calculatorNumberField.offsetWidth /
+          Number(
+            window
+              .getComputedStyle(calculatorNumberField, null)
+              .getPropertyValue("font-size")
+              .split("p")[0]
+          )
+      );
       if (state.isPreviousOperation) {
         state.currValue = action.payload;
         state.isPreviousOperation = false;
-      } else if (state.needDot) {
-        state.needDot = false;
-        state.currValue = Number(state.currValue + "." + action.payload);
-      } else {
-        state.currValue = Number(state.currValue + "" + action.payload);
+      } else if (!(String(state.currValue).split("").length + 1 > amountOfNumbersOnScreen)) {
+        if (state.needDot) {
+          state.needDot = false;
+          state.currValue = Number(state.currValue + "." + action.payload);
+        } else {
+          state.currValue = Number(state.currValue + "" + action.payload);
+        }
       }
     },
     countNum(state, action: PayloadAction<string>) {
       const operation = action.payload;
-      const currValue = operation === "%" && state.currOperation !== null ? state.currRes*state.currValue/100 : state.currValue;
+      const currValue =
+        operation === "%" && state.currOperation !== null
+          ? (state.currRes * state.currValue) / 100
+          : state.currValue;
       if (operation === "+/-") {
         state.currValue *= -1;
       } else {
@@ -46,22 +63,41 @@ export const calculatorSlice = createSlice({
         } else if (state.currOperation === "+") {
           state.currRes = state.currRes + currValue;
           state.currValue = state.currRes;
-          state.currOperation = operation !== "=" && operation !== "%" ? operation : null;
+          state.currOperation =
+            operation !== "=" && operation !== "%" ? operation : null;
         } else if (state.currOperation === "-") {
           state.currRes = state.currRes - currValue;
           state.currValue = state.currRes;
-          state.currOperation = operation !== "=" && operation !== "%" ? operation : null;
+          state.currOperation =
+            operation !== "=" && operation !== "%" ? operation : null;
         } else if (state.currOperation === "x") {
           state.currRes = state.currRes * currValue;
           state.currValue = state.currRes;
-          state.currOperation = operation !== "=" && operation !== "%" ? operation : null;
+          state.currOperation =
+            operation !== "=" && operation !== "%" ? operation : null;
         } else if (state.currOperation === "/") {
           state.currRes = state.currRes / currValue;
           state.currValue = state.currRes;
-          state.currOperation = operation !== "=" && operation !== "%" ? operation : null;
+          state.currOperation =
+            operation !== "=" && operation !== "%" ? operation : null;
         }
       }
-    //   console.log(state.currRes, state.currOperation)
+      const calculatorNumberField = document.getElementById(
+        "calculatorNumberField"
+      );
+      const amountOfNumbersOnScreen = Math.floor(
+        calculatorNumberField.offsetWidth /
+          Number(
+            window
+              .getComputedStyle(calculatorNumberField, null)
+              .getPropertyValue("font-size")
+              .split("p")[0]
+          )
+      );
+      if ((String(state.currValue).split("").length + 1 > amountOfNumbersOnScreen)) {
+        state.currValue = Number(state.currValue.toFixed(amountOfNumbersOnScreen))
+      }
+      //   console.log(state.currRes, state.currOperation)
     },
   },
 });

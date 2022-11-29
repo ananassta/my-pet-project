@@ -10,7 +10,7 @@ export const Calculator = () => {
   const currNum = useSelector((state: RootState)=>state.calculator.currValue);
   return (<div className={styles.calculator}>
     <p className={styles.calculatorTitle}>Calculator</p>
-    <div className={styles.calculatorNumberField}>
+    <div id="calculatorNumberField" className={styles.calculatorNumberField}>
       <p>{currNum}</p>
     </div>
     <div className={styles.calculatorButtonsField}>
