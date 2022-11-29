@@ -22,8 +22,8 @@
     "webpack-cli": "^5.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "NODE_ENV='development' webpack",
+    "start": "NODE_ENV='development' webpack serve --config webpack.config.js",
+    "build": "NODE_ENV='production' webpack serve --config webpack.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
