@@ -5,9 +5,11 @@ import { CalculatorButton } from "../../components/CalculatorButton/CalculatorBu
 import { CalculatorButtonTypeEnum } from "../../components/CalculatorButton/CalculatorButton";
 import styles from "./Calculator.module.css";
 
+export const buttons = ["C", "+/-", "%", "/", 7, 8, 9, "x", 4, 5, 6, "-", 1, 2, 3, "+", "", 0, "."];
+
 export const Calculator = () => {
-  const buttons = ["C", "+/-", "%", "/", 7, 8, 9, "x", 4, 5, 6, "-", 1, 2, 3, "+", "", 0, "."];
-  const currNum = useSelector((state: RootState)=>state.calculator.currValue);
+  const currNum = useSelector((state: RootState) => state.calculator.currValue);
+
   return (<div className={styles.calculator}>
     <p className={styles.calculatorTitle}>Calculator</p>
     <div id="calculatorNumberField" className={styles.calculatorNumberField}>
